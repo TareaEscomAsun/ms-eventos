@@ -15,42 +15,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escom.evento.model.Evento;
-import com.escom.evento.service.EventoService;
+import com.escom.evento.model.Asistente;
+import com.escom.evento.service.AsistenteService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/evento")
+@RequestMapping("/api/asistente")
 @CrossOrigin("*")
-public class EventoController {
-
+public class AsistenteController {
+	
 	@Autowired
-	private EventoService eventoService;
+	private AsistenteService asistenteService;
 	
 	@GetMapping
-	public ResponseEntity<List<Evento>> findAll(){
-		return new ResponseEntity<>(eventoService.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Asistente>> findAll(){
+		return new ResponseEntity<>(asistenteService.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Evento> findById(@PathVariable("id") Long id){
-		return new ResponseEntity<>(eventoService.findById(id), HttpStatus.OK);
+	public ResponseEntity<Asistente> findById(@PathVariable("id") Long id){
+		return new ResponseEntity<>(asistenteService.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Evento> create(@Valid @RequestBody Evento evento){
-		return new ResponseEntity<>(eventoService.create(evento), HttpStatus.CREATED);
+	public ResponseEntity<Asistente> create(@Valid @RequestBody Asistente evento){
+		return new ResponseEntity<>(asistenteService.create(evento), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Evento> update(@Valid @RequestBody Evento evento){
-		return new ResponseEntity<>(eventoService.update(evento), HttpStatus.OK);
+	public ResponseEntity<Asistente> update(@Valid @RequestBody Asistente evento){
+		return new ResponseEntity<>(asistenteService.update(evento), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Evento> delete(@PathVariable("id") Long id){
-		return new ResponseEntity<>(eventoService.delete(id), HttpStatus.OK);
+	public ResponseEntity<Asistente> delete(@PathVariable("id") Long id){
+		return new ResponseEntity<>(asistenteService.delete(id), HttpStatus.OK);
 	}
-	
+
 }
